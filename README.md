@@ -11,7 +11,7 @@ The purpose of this project is to make an example use of the commonly used state
     <li>Riverpod</li>
 </ul>
 
-I made a Todo application with all these libraries as an example
+I made a Todo application with all these libraries as an example.
 
 ## Getting Started
 
