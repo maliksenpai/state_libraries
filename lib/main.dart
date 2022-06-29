@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:state_libraries/bloc/bloc_page.dart';
+import 'package:state_libraries/provider/provider_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,16 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blueGrey,
       ),
       home: const HomePage(),
     );
@@ -39,63 +31,67 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(title: const Text("State Libraries"),),
       body: SafeArea(
         child: Center(
-          child: Column(
-            children: [
-              OutlinedButton(
-                child: Text("Bloc Page"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const BlocWrapper()),
-                  );
-                },
-              ),
-              OutlinedButton(
-                child: Text("Get Page"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const BlocPage()),
-                  );
-                },
-              ),
-              OutlinedButton(
-                child: Text("Mob Page"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const BlocPage()),
-                  );
-                },
-              ),
-              OutlinedButton(
-                child: Text("Provider Page"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const BlocPage()),
-                  );
-                },
-              ),
-              OutlinedButton(
-                child: Text("Redux Page"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const BlocPage()),
-                  );
-                },
-              ),
-              OutlinedButton(
-                child: Text("Riverpod Page"),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const BlocPage()),
-                  );
-                },
-              ),
-            ],
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height * 0.5,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                OutlinedButton(
+                  child: Text("Bloc Page"),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const BlocWrapper()),
+                    );
+                  },
+                ),
+                OutlinedButton(
+                  child: Text("Getx Page"),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const BlocPage()),
+                    );
+                  },
+                ),
+                OutlinedButton(
+                  child: Text("Mob Page"),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const BlocPage()),
+                    );
+                  },
+                ),
+                OutlinedButton(
+                  child: Text("Provider Page"),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ProviderWrapper()),
+                    );
+                  },
+                ),
+                OutlinedButton(
+                  child: Text("Redux Page"),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const BlocPage()),
+                    );
+                  },
+                ),
+                OutlinedButton(
+                  child: Text("Riverpod Page"),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const BlocPage()),
+                    );
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
