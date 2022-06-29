@@ -1,6 +1,17 @@
-# state_libraries
+# State Libraries
 
-A new Flutter project.
+The purpose of this project is to make an example use of the commonly used state libraries. In this project I used the following libraries:
+
+<ul>
+    <li>Bloc</li>
+    <li>Get</li>
+    <li>Mobx</li>
+    <li>Provider</li>
+    <li>Redux</li>
+    <li>Riverpod</li>
+</ul>
+
+I made a Todo application with all these libraries as an example
 
 ## Getting Started
 
