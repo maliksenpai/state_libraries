@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:state_libraries/bloc/bloc_page.dart';
+import 'package:state_libraries/get/get_page.dart';
 import 'package:state_libraries/provider/provider_page.dart';
 
 void main() {
@@ -50,7 +51,7 @@ class HomePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const BlocPage()),
+                      MaterialPageRoute(builder: (context) => const GetWrapper()),
                     );
                   },
                 ),
