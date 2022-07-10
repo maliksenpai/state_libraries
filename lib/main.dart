@@ -81,15 +81,6 @@ class HomePage extends StatelessWidget {
                   },
                 ),
                 OutlinedButton(
-                  child: Text("Redux Page"),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const BlocPage()),
-                    );
-                  },
-                ),
-                OutlinedButton(
                   child: Text("Riverpod Page"),
                   onPressed: () {
                     Navigator.push(

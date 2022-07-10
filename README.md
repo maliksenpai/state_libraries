@@ -7,7 +7,6 @@ The purpose of this project is to make an example use of the commonly used state
     <li>Get</li>
     <li>Mobx</li>
     <li>Provider</li>
-    <li>Redux</li>
     <li>Riverpod</li>
 </ul>
 
