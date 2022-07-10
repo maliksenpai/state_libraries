@@ -14,15 +14,15 @@ class GetWrapper extends StatelessWidget {
         primarySwatch: Colors.blueGrey,
       ),
       getPages: [
-        GetPage(name: "/home", page: () => ProviderPage())
+        GetPage(name: "/home", page: () => GetxPage())
       ],
-      home: ProviderPage(),
+      home: GetxPage(),
     );
   }
 }
 
-class ProviderPage extends StatelessWidget {
-  const ProviderPage({Key? key}) : super(key: key);
+class GetxPage extends StatelessWidget {
+  const GetxPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

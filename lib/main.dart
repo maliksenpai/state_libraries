@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:state_libraries/bloc/bloc_page.dart';
 import 'package:state_libraries/get/get_page.dart';
+import 'package:state_libraries/mobx/mobx_page.dart';
 import 'package:state_libraries/provider/provider_page.dart';
+import 'package:state_libraries/riverpod/riverpod_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -56,11 +58,11 @@ class HomePage extends StatelessWidget {
                   },
                 ),
                 OutlinedButton(
-                  child: Text("Mob Page"),
+                  child: Text("Mobx Page"),
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const BlocPage()),
+                      MaterialPageRoute(builder: (context) => const MobxPage()),
                     );
                   },
                 ),
@@ -87,7 +89,7 @@ class HomePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const BlocPage()),
+                      MaterialPageRoute(builder: (context) => const RiverpodWrapper()),
                     );
                   },
                 ),

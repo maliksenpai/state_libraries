@@ -37,12 +37,14 @@ dependencies:
   flutter_bloc:
   get:
   flutter_mobx:
+  mobx_codegen:
   provider:
   flutter_redux:
   flutter_riverpod:
   uuid:
 
 dev_dependencies:
+  build_runner:
   flutter_test:
     sdk: flutter
 
