@@ -1,8 +1,7 @@
 import 'package:get/get.dart';
 import 'package:state_libraries/model/todo.dart';
 
-class GetTodo extends GetxController{
-
+class GetTodo extends GetxController {
   RxList<Todo> todos = RxList.empty(growable: true);
   RxBool loading = RxBool(false);
 
@@ -26,6 +25,4 @@ class GetTodo extends GetxController{
     todos.removeWhere((element) => element.id == id);
     loading.value = false;
   }
-
-
 }

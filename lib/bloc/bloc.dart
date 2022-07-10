@@ -3,8 +3,7 @@ import 'package:state_libraries/bloc/bloc_event.dart';
 import 'package:state_libraries/bloc/bloc_state.dart';
 import 'package:state_libraries/model/todo.dart';
 
-class TodoBloc extends Bloc<TodoEvent, TodoState>{
-
+class TodoBloc extends Bloc<TodoEvent, TodoState> {
   List<Todo> todos = [];
 
   TodoBloc() : super(TodoInitState()) {
@@ -17,7 +16,8 @@ class TodoBloc extends Bloc<TodoEvent, TodoState>{
     on<UpdateTodo>((event, emit) async {
       emit(LoadingTodos());
       await Future.delayed(const Duration(seconds: 1));
-      todos[todos.indexWhere((element) => element.id == event.todo.id)] = event.todo;
+      todos[todos.indexWhere((element) => element.id == event.todo.id)] =
+          event.todo;
       emit(UpdatedTodos(todos: todos));
     });
     on<RemoveTodo>((event, emit) async {
@@ -27,5 +27,4 @@ class TodoBloc extends Bloc<TodoEvent, TodoState>{
       emit(UpdatedTodos(todos: todos));
     });
   }
-
 }

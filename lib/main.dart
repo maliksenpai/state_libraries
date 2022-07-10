@@ -31,7 +31,9 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("State Libraries"),),
+      appBar: AppBar(
+        title: const Text("State Libraries"),
+      ),
       body: SafeArea(
         child: Center(
           child: SizedBox(
@@ -44,7 +46,8 @@ class HomePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const BlocWrapper()),
+                      MaterialPageRoute(
+                          builder: (context) => const BlocWrapper()),
                     );
                   },
                 ),
@@ -53,7 +56,8 @@ class HomePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const GetWrapper()),
+                      MaterialPageRoute(
+                          builder: (context) => const GetWrapper()),
                     );
                   },
                 ),
@@ -71,7 +75,8 @@ class HomePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const ProviderWrapper()),
+                      MaterialPageRoute(
+                          builder: (context) => const ProviderWrapper()),
                     );
                   },
                 ),
@@ -89,7 +94,8 @@ class HomePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const RiverpodWrapper()),
+                      MaterialPageRoute(
+                          builder: (context) => const RiverpodWrapper()),
                     );
                   },
                 ),

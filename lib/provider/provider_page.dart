@@ -94,12 +94,17 @@ class ProviderPage extends StatelessWidget {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          child: todoProvider.loading ? CircularProgressIndicator(color: Colors.white,) : Icon(Icons.add),
-          onPressed: todoProvider.loading ? null : () {
-            providerDialog(todoProvider: todoProvider, context: context);
-          },
-        )
-    );
+          child: todoProvider.loading
+              ? CircularProgressIndicator(
+                  color: Colors.white,
+                )
+              : Icon(Icons.add),
+          onPressed: todoProvider.loading
+              ? null
+              : () {
+                  providerDialog(todoProvider: todoProvider, context: context);
+                },
+        ));
   }
 }
 

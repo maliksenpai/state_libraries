@@ -5,7 +5,7 @@ part 'mobx.g.dart';
 
 class MobxTodo = _MobxTodo with _$MobxTodo;
 
-abstract class _MobxTodo with Store{
+abstract class _MobxTodo with Store {
   @observable
   List<Todo> todos = [];
 
@@ -36,5 +36,4 @@ abstract class _MobxTodo with Store{
     todos = todos;
     loading = false;
   }
-
 }

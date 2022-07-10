@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:state_libraries/model/todo.dart';
 
-class TodoProvider extends ChangeNotifier{
+class TodoProvider extends ChangeNotifier {
   List<Todo> todos = [];
   bool loading = false;
 

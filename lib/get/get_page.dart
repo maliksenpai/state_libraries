@@ -13,9 +13,7 @@ class GetWrapper extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      getPages: [
-        GetPage(name: "/home", page: () => GetxPage())
-      ],
+      getPages: [GetPage(name: "/home", page: () => GetxPage())],
       home: GetxPage(),
     );
   }
@@ -32,73 +30,71 @@ class GetxPage extends StatelessWidget {
         title: Text("Getx Page"),
       ),
       body: SafeArea(
-        child: Obx(
-           () {
-            return Center(
-              child: getTodo.todos.isEmpty
-                  ? Container()
-                  : Column(
-                children: getTodo.todos.map((todo) {
-                  return Card(
-                    child: ListTile(
-                      title: Text(todo.todo),
-                      trailing: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(50),
-                            child: Material(
-                              child: InkWell(
-                                child: const Padding(
-                                  padding: EdgeInsets.all(5),
-                                  child: Icon(Icons.edit),
+        child: Obx(() {
+          return Center(
+            child: getTodo.todos.isEmpty
+                ? Container()
+                : Column(
+                    children: getTodo.todos.map((todo) {
+                      return Card(
+                        child: ListTile(
+                          title: Text(todo.todo),
+                          trailing: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(50),
+                                child: Material(
+                                  child: InkWell(
+                                    child: const Padding(
+                                      padding: EdgeInsets.all(5),
+                                      child: Icon(Icons.edit),
+                                    ),
+                                    onTap: () {
+                                      getDialog(
+                                        getTodo: getTodo,
+                                        context: context,
+                                        currentTodo: todo,
+                                      );
+                                    },
+                                  ),
                                 ),
-                                onTap: () {
-                                  getDialog(
-                                    getTodo: getTodo,
-                                    context: context,
-                                    currentTodo: todo,
+                              ),
+                              Checkbox(
+                                value: todo.finished,
+                                onChanged: (value) {
+                                  getTodo.updateTodo(
+                                    todo.copyWith(finished: !todo.finished),
                                   );
                                 },
                               ),
-                            ),
-                          ),
-                          Checkbox(
-                            value: todo.finished,
-                            onChanged: (value) {
-                              getTodo.updateTodo(
-                                todo.copyWith(finished: !todo.finished),
-                              );
-                            },
-                          ),
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(50),
-                            child: Material(
-                              color: Colors.redAccent,
-                              child: InkWell(
-                                child: const Padding(
-                                  padding: EdgeInsets.all(5),
-                                  child: Icon(
-                                    Icons.delete,
-                                    color: Colors.white,
+                              ClipRRect(
+                                borderRadius: BorderRadius.circular(50),
+                                child: Material(
+                                  color: Colors.redAccent,
+                                  child: InkWell(
+                                    child: const Padding(
+                                      padding: EdgeInsets.all(5),
+                                      child: Icon(
+                                        Icons.delete,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                    onTap: () {
+                                      getTodo.removeTodo(todo.id);
+                                    },
                                   ),
                                 ),
-                                onTap: () {
-                                  getTodo.removeTodo(todo.id);
-                                },
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  );
-                }).toList(),
-              ),
-            );
-          }
-        ),
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+          );
+        }),
       ),
       floatingActionButton: Obx(
         () {

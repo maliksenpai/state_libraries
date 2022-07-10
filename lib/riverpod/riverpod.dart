@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:state_libraries/model/todo.dart';
 
-class TodoRiverpod extends ChangeNotifier{
+class TodoRiverpod extends ChangeNotifier {
   List<Todo> todos = [];
   bool loading = false;
 

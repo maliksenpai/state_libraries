@@ -15,8 +15,7 @@ class MobxPage extends StatelessWidget {
         title: Text("Mobx Page"),
       ),
       body: SafeArea(
-        child: Observer(
-            builder: (_) {
+        child: Observer(builder: (_) {
           return Center(
             child: mobxTodo.todos.isEmpty
                 ? Container()
@@ -82,23 +81,21 @@ class MobxPage extends StatelessWidget {
           );
         }),
       ),
-      floatingActionButton: Observer(
-        builder: (_) {
-          print(mobxTodo);
-          return FloatingActionButton(
-            child: mobxTodo.loading
-                ? CircularProgressIndicator(
-                    color: Colors.white,
-                  )
-                : Icon(Icons.add),
-            onPressed: mobxTodo.loading
-                ? null
-                : () {
-                    mobxDialog(mobxTodo: mobxTodo, context: context);
-                  },
-          );
-        }
-      ),
+      floatingActionButton: Observer(builder: (_) {
+        print(mobxTodo);
+        return FloatingActionButton(
+          child: mobxTodo.loading
+              ? CircularProgressIndicator(
+                  color: Colors.white,
+                )
+              : Icon(Icons.add),
+          onPressed: mobxTodo.loading
+              ? null
+              : () {
+                  mobxDialog(mobxTodo: mobxTodo, context: context);
+                },
+        );
+      }),
     );
   }
 }

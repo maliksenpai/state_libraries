@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:state_libraries/model/todo.dart';
-import 'package:state_libraries/provider/provider.dart';
 import 'package:state_libraries/riverpod/riverpod.dart';
 import 'package:uuid/uuid.dart';
-import 'package:state_libraries/riverpod/riverpod.dart';
 
 class RiverpodWrapper extends StatelessWidget {
   const RiverpodWrapper({Key? key}) : super(key: key);
@@ -16,7 +14,6 @@ class RiverpodWrapper extends StatelessWidget {
     );
   }
 }
-
 
 class RiverpodPage extends ConsumerWidget {
   const RiverpodPage({Key? key}) : super(key: key);
@@ -30,88 +27,91 @@ class RiverpodPage extends ConsumerWidget {
           title: Text("Riverpod Page"),
         ),
         body: SafeArea(
-          child: Builder(
-            builder: (context) {
-              return Center(
-                child: todoRiverpod.todos.isEmpty
-                    ? Container()
-                    : Column(
-                  children: todoRiverpod.todos.map((todo) {
-                    return Card(
-                      child: ListTile(
-                        title: Text(todo.todo),
-                        trailing: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(50),
-                              child: Material(
-                                child: InkWell(
-                                  child: const Padding(
-                                    padding: EdgeInsets.all(5),
-                                    child: Icon(Icons.edit),
+          child: Builder(builder: (context) {
+            return Center(
+              child: todoRiverpod.todos.isEmpty
+                  ? Container()
+                  : Column(
+                      children: todoRiverpod.todos.map((todo) {
+                        return Card(
+                          child: ListTile(
+                            title: Text(todo.todo),
+                            trailing: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(50),
+                                  child: Material(
+                                    child: InkWell(
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(5),
+                                        child: Icon(Icons.edit),
+                                      ),
+                                      onTap: () {
+                                        providerDialog(
+                                          todoRiverpod: todoRiverpod,
+                                          context: context,
+                                          currentTodo: todo,
+                                        );
+                                      },
+                                    ),
                                   ),
-                                  onTap: () {
-                                    providerDialog(
-                                      todoRiverpod: todoRiverpod,
-                                      context: context,
-                                      currentTodo: todo,
+                                ),
+                                Checkbox(
+                                  value: todo.finished,
+                                  onChanged: (value) {
+                                    todoRiverpod.updateTodo(
+                                      todo.copyWith(finished: !todo.finished),
                                     );
                                   },
                                 ),
-                              ),
-                            ),
-                            Checkbox(
-                              value: todo.finished,
-                              onChanged: (value) {
-                                todoRiverpod.updateTodo(
-                                  todo.copyWith(finished: !todo.finished),
-                                );
-                              },
-                            ),
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(50),
-                              child: Material(
-                                color: Colors.redAccent,
-                                child: InkWell(
-                                  child: const Padding(
-                                    padding: EdgeInsets.all(5),
-                                    child: Icon(
-                                      Icons.delete,
-                                      color: Colors.white,
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(50),
+                                  child: Material(
+                                    color: Colors.redAccent,
+                                    child: InkWell(
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(5),
+                                        child: Icon(
+                                          Icons.delete,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      onTap: () {
+                                        todoRiverpod.removeTodo(todo.id);
+                                      },
                                     ),
                                   ),
-                                  onTap: () {
-                                    todoRiverpod.removeTodo(todo.id);
-                                  },
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                ),
-              );
-            }
-          ),
+                                )
+                              ],
+                            ),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+            );
+          }),
         ),
         floatingActionButton: FloatingActionButton(
-          child: todoRiverpod.loading ? CircularProgressIndicator(color: Colors.white,) : Icon(Icons.add),
-          onPressed: todoRiverpod.loading ? null : () {
-            providerDialog(todoRiverpod: todoRiverpod, context: context);
-          },
-        )
-    );
+          child: todoRiverpod.loading
+              ? CircularProgressIndicator(
+                  color: Colors.white,
+                )
+              : Icon(Icons.add),
+          onPressed: todoRiverpod.loading
+              ? null
+              : () {
+                  providerDialog(todoRiverpod: todoRiverpod, context: context);
+                },
+        ));
   }
 }
 
 void providerDialog(
     {required TodoRiverpod todoRiverpod,
-      required BuildContext context,
-      Todo? currentTodo}) {
+    required BuildContext context,
+    Todo? currentTodo}) {
   TextEditingController textEditingController = TextEditingController();
   if (currentTodo != null) {
     textEditingController.text = currentTodo.todo;
